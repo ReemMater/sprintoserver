@@ -26,30 +26,16 @@ app.use('/api/issues', require('./routes/issues'));
 const PORT = process.env.PORT || 5000;
 
 app.use((req, res, next) => {
-  res.setHeader('Acces-Control-Allow-Origin', '*');
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader('Acces-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-  res.setHeader('Acces-Contorl-Allow-Methods', { 'Content-Type': "application/json" });
+  res.header('Acces-Control-Allow-Origin', '*');
+  // res.setHeader("Access-Control-Allow-Credentials", true);
+  res.header('Acces-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+  res.header('Acces-Contorl-Allow-Headers', 'Content-Type');
   next();
 });
 
-const cors = require("cors");
-const corsOptions = {
-  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-  origin: 'http://localhost:3000/*',
-  credentials: true,            //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-}
 
-app.use(cors(corsOptions));
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000/");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+
+
 
 app.listen(PORT, () => {
   console.log(`server start in ${PORT}`);
