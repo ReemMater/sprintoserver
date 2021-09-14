@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 const cors = require("cors");
 const corsOptions = {
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-  origin: 'http://localhost:5500/*',
+  origin: 'http://localhost:3000/*',
   credentials: true,            //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }
