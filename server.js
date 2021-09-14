@@ -35,6 +35,14 @@ app.use((req, res, next) => {
 app.use(cors({
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 }));
+const cors = require("cors");
+const corsOptions = {
+  origin: '*',
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions));
 
 app.listen(PORT, () => {
   console.log(`server start in ${PORT}`);
