@@ -14,7 +14,14 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 //Define Routes
+app.all((req, res, next) => {
 
+  res.header('Acces-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header('Acces-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/projects', require('./routes/projects'));
@@ -25,16 +32,17 @@ app.use('/api/issues', require('./routes/issues'));
 
 const PORT = process.env.PORT || 5000;
 
-app.use((req, res, next) => {
-  res.header('Acces-Control-Allow-Origin', '*');
-  // res.setHeader("Access-Control-Allow-Credentials", true);
-  res.header('Acces-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-  res.header('Acces-Contorl-Allow-Headers', 'Content-Type');
-  next();
-});
+// const cors = require("cors");
+// const corsOptions = {
+//   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
+//   origin: '*',
+//   credentials: true,            //access-control-allow-credentials:true
+//   optionSuccessStatus: 200,
+//   // 'Acces-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
+//   // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept", 'Acces-Control-Allow-Origin': '*'
+// }
 
-
-
+// app.use(cors(corsOptions));
 
 
 app.listen(PORT, () => {

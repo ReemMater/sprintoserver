@@ -66,12 +66,27 @@ router.post(
     }
   }
 );
-
+// const cors = require("cors");
+// const corsOptions = {
+//   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
+//   origin: '*',
+//   credentials: true,            //access-control-allow-credentials:true
+//   optionSuccessStatus: 200,
+//   // 'Acces-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
+//   // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept", 'Acces-Control-Allow-Origin': '*'
+// }
 router.get('/', async (req, res) => {
-  let user = await User.find();
-  if (user) return res.json(user);
+  try {
+    let user = await User.find();
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
+
+// app.use(cors(corsOptions));
 router.get('/:email', async (req, res) => {
   try {
     let user = await User.findOne({ email: req.params.email });
