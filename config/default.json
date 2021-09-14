@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://Remo:01068065964@contactkeeber.rtz7b.mongodb.net/SprintoDB?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}
