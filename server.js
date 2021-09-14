@@ -32,6 +32,9 @@ app.use((req, res, next) => {
   res.setHeader('Acces-Contorl-Allow-Methods', { 'Content-Type': "application/json" }, 'Authorization');
   next();
 });
+app.use(cors({
+  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
+}));
 
 app.listen(PORT, () => {
   console.log(`server start in ${PORT}`);
