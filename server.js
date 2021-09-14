@@ -32,11 +32,10 @@ app.use((req, res, next) => {
   res.setHeader('Acces-Contorl-Allow-Methods', { 'Content-Type': "application/json" }, 'Authorization');
   next();
 });
-app.use(cors({
-  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
-}));
+
 const cors = require("cors");
 const corsOptions = {
+  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   origin: '*',
   credentials: true,            //access-control-allow-credentials:true
   optionSuccessStatus: 200,
