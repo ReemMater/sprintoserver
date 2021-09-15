@@ -19,7 +19,7 @@ app.all((req, res, next) => {
   res.header('Acces-Control-Allow-Origin', '*');
   res.header("Access-Control-Allow-Credentials", true);
   res.header('Acces-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
   next();
 });
 app.use('/api/users', require('./routes/users'));
@@ -30,7 +30,7 @@ app.use('/api/tasks', require('./routes/tasks'));
 app.use('/api/subtasks', require('./routes/subtasks'));
 app.use('/api/issues', require('./routes/issues'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // const cors = require("cors");
 // const corsOptions = {

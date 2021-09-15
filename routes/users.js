@@ -78,6 +78,7 @@ router.post(
 router.get('/', async (req, res) => {
   try {
     let user = await User.find();
+
     res.json(user);
   } catch (err) {
     console.error(err.message);
