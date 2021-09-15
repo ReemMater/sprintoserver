@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function getData(){
+        fetch('http://localhost:5000/api/users').then(
+          (result)=>result.json()
+        ).then(
+          (data)=>console.log(JSON.stringify(data))
+        );
+        //POST try
+        /*fetch('http://localhost:5000/api/projects', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            projectname: 'Project 1',
+            projectdescription: 'My First project with post',
+            projectsummary: 'This Project aims to control managing projects loop'
+          })
+        }).then(
+          (result)=>result.json())
+        .then((data)=>{
+          console.log(JSON.stringify(data))
+        });*/
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="Get Users" onclick="getData()"/>
+  </body>
+</html>
